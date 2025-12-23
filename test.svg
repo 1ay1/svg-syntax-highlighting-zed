@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 400 300"
+     width="400"
+     height="300">
+
+  <!-- ===== DEFINITIONS ===== -->
+  <defs>
+    <!-- Linear Gradient -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#87CEEB" />
+      <stop offset="50%" stop-color="#4A90D9" />
+      <stop offset="100%" stop-color="#1E3A5F" />
+    </linearGradient>
+
+    <!-- Radial Gradient -->
+    <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFF00" />
+      <stop offset="100%" stop-color="#FFA500" />
+    </radialGradient>
+
+    <!-- Filter: Drop Shadow -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur" />
+      <feOffset in="blur" dx="2" dy="2" result="offsetBlur" />
+      <feMerge>
+        <feMergeNode in="offsetBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Filter: Blur -->
+    <filter id="blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+    </filter>
+
+    <!-- Clip Path -->
+    <clipPath id="circleClip">
+      <circle cx="200" cy="150" r="100" />
+    </clipPath>
+
+    <!-- Mask -->
+    <mask id="fadeMask">
+      <rect x="0" y="0" width="400" height="300" fill="white" />
+      <rect x="0" y="250" width="400" height="50" fill="black" />
+    </mask>
+
+    <!-- Symbol (Reusable) -->
+    <symbol id="star" viewBox="0 0 24 24">
+      <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"
+               fill="currentColor" />
+    </symbol>
+
+    <!-- Marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0,0 10,3.5 0,7" fill="#333" />
+    </marker>
+  </defs>
+
+  <!-- ===== BACKGROUND ===== -->
+  <rect x="0" y="0" width="400" height="300" fill="url(#skyGradient)" />
+
+  <!-- ===== SHAPES ===== -->
+
+  <!-- Rectangle with rounded corners -->
+  <rect id="ground" x="0" y="250" width="400" height="50"
+        fill="#228B22" rx="5" ry="5" />
+
+  <!-- Circle (Sun) -->
+  <circle id="sun" cx="350" cy="50" r="30"
+          fill="url(#sunGradient)"
+          filter="url(#dropShadow)" />
+
+  <!-- Ellipse (Cloud) -->
+  <g id="cloud" fill="white" opacity="0.9" filter="url(#blur)">
+    <ellipse cx="80" cy="60" rx="30" ry="20" />
+    <ellipse cx="110" cy="50" rx="35" ry="25" />
+    <ellipse cx="140" cy="60" rx="25" ry="18" />
+  </g>
+
+  <!-- Lines -->
+  <line x1="50" y1="200" x2="100" y2="250"
+        stroke="#8B4513" stroke-width="3" />
+
+  <!-- Polyline -->
+  <polyline points="150,220 170,200 190,220 210,200 230,220"
+            stroke="#333" stroke-width="2" fill="none" />
+
+  <!-- Polygon (Mountain) -->
+  <polygon points="200,250 280,150 360,250"
+           fill="#4A5568" stroke="#2D3748" stroke-width="2" />
+
+  <!-- Path (Complex Shape - Tree) -->
+  <path id="tree"
+        d="M 100 250
+           L 100 200
+           L 80 200
+           L 110 160
+           L 90 160
+           L 120 120
+           L 100 120
+           L 130 80
+           L 160 120
+           L 140 120
+           L 170 160
+           L 150 160
+           L 180 200
+           L 160 200
+           L 160 250
+           Z"
+        fill="#228B22"
+        stroke="#006400"
+        stroke-width="1"
+        filter="url(#dropShadow)" />
+
+  <!-- Path with curves (Bird) -->
+  <path d="M 280 80 Q 290 70 300 80 Q 310 70 320 80"
+        stroke="#333" stroke-width="2" fill="none" />
+
+  <!-- Arc path -->
+  <path d="M 50 280 A 30 30 0 0 1 110 280"
+        stroke="#FF6347" stroke-width="3" fill="none" />
+
+  <!-- ===== USE (Symbol Reference) ===== -->
+  <use xlink:href="#star" x="300" y="100" width="20" height="20"
+       fill="#FFD700" />
+  <use href="#star" x="320" y="120" width="15" height="15"
+       fill="#FFA500" />
+
+  <!-- ===== TEXT ===== -->
+  <text x="200" y="290"
+        font-family="Arial, sans-serif"
+        font-size="14"
+        font-weight="bold"
+        fill="white"
+        text-anchor="middle"
+        dominant-baseline="middle">
+    SVG Mode Test Scene
+  </text>
+
+  <text x="10" y="290" font-size="10" fill="#ccc">
+    <tspan x="10" dy="0">Created with</tspan>
+    <tspan x="10" dy="12">svg-mode-zed</tspan>
+  </text>
+
+  <!-- ===== ANIMATION ===== -->
+  <circle cx="50" cy="100" r="5" fill="#FF0000">
+    <animate attributeName="cy"
+             values="100;120;100"
+             dur="2s"
+             repeatCount="indefinite" />
+    <animate attributeName="fill"
+             values="#FF0000;#00FF00;#0000FF;#FF0000"
+             dur="3s"
+             repeatCount="indefinite" />
+  </circle>
+
+  <rect x="60" y="95" width="10" height="10" fill="#0066CC">
+    <animateTransform attributeName="transform"
+                      type="rotate"
+                      from="0 65 100"
+                      to="360 65 100"
+                      dur="4s"
+                      repeatCount="indefinite" />
+  </rect>
+
+  <!-- ===== GROUPS WITH TRANSFORMS ===== -->
+  <g id="house" transform="translate(250, 180)">
+    <rect x="0" y="20" width="40" height="30" fill="#8B4513" />
+    <polygon points="0,20 20,0 40,20" fill="#A52A2A" />
+    <rect x="15" y="35" width="10" height="15" fill="#654321" />
+    <rect x="5" y="28" width="8" height="8" fill="#87CEEB" />
+    <rect x="27" y="28" width="8" height="8" fill="#87CEEB" />
+  </g>
+
+  <!-- Nested groups -->
+  <g id="flowers" transform="translate(180, 230)">
+    <g class="flower" transform="translate(0, 0)">
+      <line x1="0" y1="0" x2="0" y2="20" stroke="green" stroke-width="2" />
+      <circle cx="0" cy="0" r="5" fill="red" />
+    </g>
+    <g class="flower" transform="translate(15, 5)">
+      <line x1="0" y1="0" x2="0" y2="15" stroke="green" stroke-width="2" />
+      <circle cx="0" cy="0" r="4" fill="yellow" />
+    </g>
+    <g class="flower" transform="translate(30, 0)">
+      <line x1="0" y1="0" x2="0" y2="20" stroke="green" stroke-width="2" />
+      <circle cx="0" cy="0" r="5" fill="purple" />
+    </g>
+  </g>
+
+  <!-- ===== LINE WITH MARKER ===== -->
+  <line x1="20" y1="150" x2="60" y2="150"
+        stroke="#333" stroke-width="2"
+        marker-end="url(#arrowhead)" />
+
+  <!-- ===== FOREIGN OBJECT (Embedded HTML) ===== -->
+  <!--
+  <foreignObject x="10" y="10" width="100" height="50">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p style="font-size: 10px;">HTML content</p>
+    </div>
+  </foreignObject>
+  -->
+
+  <!-- ===== STYLE ELEMENT ===== -->
+  <style>
+    .highlight { fill: #FF0; }
+    #sun:hover { opacity: 0.8; }
+  </style>
+
+</svg>

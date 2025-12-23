@@ -1,0 +1,14 @@
+[package]
+name = "svg-syntax-highlighting"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "SVG language support and syntax highlighting for Zed"
+authors = ["Ayush <tfeayush@gmail.com>"]
+repository = "https://github.com/1ay1/svg-syntax-highlighting-zed"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+zed_extension_api = "0.5"

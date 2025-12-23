@@ -1,0 +1,10 @@
+name = "SVG"
+grammar = "xml"
+path_suffixes = ["svg"]
+block_comment = ["<!--", "-->"]
+brackets = [
+  { start = "<", end = ">", close = false, newline = false },
+  { start = "\"", end = "\"", close = true, newline = false },
+  { start = "'", end = "'", close = true, newline = false },
+]
+word_characters = ["-", "_"]
