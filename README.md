@@ -2,6 +2,10 @@
 
 Finally, proper SVG support in Zed! I built this extension because I was tired of looking at plain, unhighlighted SVG files while working on web projects.
 
+## Screenshots
+
+![Document Outline](assets/outline.png)
+
 ## What it does
 
 - **Syntax highlighting** for SVG/XML elements, attributes, and values
